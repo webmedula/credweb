@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>credweb · análise de crédito para venda a prazo</title>
+  <link rel="stylesheet" href="/estilo.css">
+</head>
+<body>
+  <div class="entrar">
+    <div class="card">
+      <div class="marca">cred<span>web</span></div>
+      <p class="muted">Análise de crédito de empresas para venda a prazo: Receita Federal, sanções do governo, presença física, sócios e reputação, com faixa e limite sugerido.</p>
+
+      <div class="abas">
+        <button class="sec" id="abaLogin" type="button">Entrar</button>
+        <button class="sec" id="abaCadastro" type="button">Criar conta</button>
+      </div>
+
+      <form id="formLogin">
+        <div class="linha"><div><label for="lEmail">E-mail</label><input id="lEmail" type="email" autocomplete="username" required></div></div>
+        <div class="linha"><div><label for="lSenha">Senha</label><input id="lSenha" type="password" autocomplete="current-password" required></div></div>
+        <button class="prim" type="submit">Entrar</button>
+        <div class="erro" id="erroLogin"></div>
+      </form>
+
+      <form id="formCadastro" class="oculto">
+        <div class="linha"><div><label for="cEmpresa">Nome da sua empresa</label><input id="cEmpresa" required></div></div>
+        <div class="linha"><div><label for="cCnpj">CNPJ da sua empresa</label><input id="cCnpj" inputmode="numeric" required></div></div>
+        <div class="linha"><div><label for="cNome">Seu nome</label><input id="cNome" autocomplete="name" required></div></div>
+        <div class="linha"><div><label for="cEmail">E-mail</label><input id="cEmail" type="email" autocomplete="username" required></div></div>
+        <div class="linha"><div><label for="cSenha">Senha (mínimo 8 caracteres)</label><input id="cSenha" type="password" minlength="8" autocomplete="new-password" required></div></div>
+        <label class="check"><input id="cTermos" type="checkbox"> <span>Li e aceito os <a href="/termos.html" target="_blank">termos de uso e a política de privacidade</a>.</span></label>
+        <p class="muted">Teste grátis por 14 dias, com 10 análises. Sem cartão.</p>
+        <button class="prim" type="submit">Criar conta</button>
+        <div class="erro" id="erroCadastro"></div>
+      </form>
+    </div>
+  </div>
+  <script src="/entrar.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>credweb</title>
+  <link rel="stylesheet" href="/estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="marca">cred<span>web</span></div>
+    <nav>
+      <button data-tela="analise" class="ativo" type="button">Nova análise</button>
+      <button data-tela="historico" type="button">Histórico</button>
+      <button data-tela="config" type="button" id="navConfig">Configurações</button>
+      <button data-tela="admin" type="button" id="navAdmin" class="oculto">Administração</button>
+    </nav>
+    <div class="direita">
+      <span class="uso" id="uso"></span>
+      <span id="quem"></span>
+      <button class="sec" id="sair" type="button">Sair</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ Nova análise ============ -->
+    <section id="tela-analise">
+      <div class="card">
+        <h2>Nova análise</h2>
+        <form id="formAnalise">
+          <div class="linha">
+            <div><label for="aCnpj">CNPJ do cliente</label><input id="aCnpj" inputmode="numeric" placeholder="00.000.000/0000-00" required></div>
+            <div><label for="aValor">Valor da compra (R$)</label><input id="aValor" type="number" min="0" step="0.01"></div>
+            <div><label for="aEntrada">Entrada oferecida (R$)</label><input id="aEntrada" type="number" min="0" step="0.01"></div>
+          </div>
+          <button class="prim" id="btnAnalisar" type="submit">Analisar</button>
+          <span class="muted" id="statusAnalise"></span>
+          <div class="erro" id="erroAnalise"></div>
+        </form>
+      </div>
+      <div id="resultado"></div>
+    </section>
+
+    <!-- ============ Histórico ============ -->
+    <section id="tela-historico" class="oculto">
+      <div class="card">
+        <h2>Histórico de análises</h2>
+        <div class="linha"><div><label for="hBusca">Buscar por CNPJ</label><input id="hBusca" inputmode="numeric"></div></div>
+        <table>
+          <thead><tr><th>Data</th><th>Cliente</th><th>Faixa</th><th class="num">Score</th><th class="num">Limite</th><th>Pagou?</th><th>Por</th></tr></thead>
+          <tbody id="hLista"></tbody>
+        </table>
+        <p class="muted">Marque se o cliente pagou: é isso que vai permitir calibrar o score com o resultado real.</p>
+      </div>
+    </section>
+
+    <!-- ============ Configurações ============ -->
+    <section id="tela-config" class="oculto">
+      <div class="card">
+        <h2>Configurações da empresa</h2>
+        <form id="formConfig">
+          <h3>Teto de crediário por faixa (R$)</h3>
+          <p class="muted">O limite sugerido nunca passa destes valores. Deixe em branco para não ter teto.</p>
+          <div class="linha">
+            <div><label for="tA">Faixa A</label><input id="tA" type="number" min="0" step="100"></div>
+            <div><label for="tB">Faixa B</label><input id="tB" type="number" min="0" step="100"></div>
+            <div><label for="tC">Faixa C</label><input id="tC" type="number" min="0" step="100"></div>
+          </div>
+          <h3>Setores que você atende</h3>
+          <p class="muted">Os 2 primeiros dígitos do CNAE, separados por vírgula (ex.: 49 para transporte rodoviário, 01 para agricultura). Cliente desses setores ganha pontos.</p>
+          <div class="linha"><div><input id="ramos" placeholder="49, 01, 41"></div></div>
+          <button class="prim" type="submit">Salvar</button>
+          <div class="ok" id="okConfig"></div>
+          <div class="erro" id="erroConfig"></div>
+        </form>
+      </div>
+      <div class="card">
+        <h2>Bureau de crédito</h2>
+        <p>Em breve: cadastre aqui a credencial do seu contrato com o bureau (Innove, Serasa, Boa Vista ou SPC) para incluir dívidas, protestos e score de crédito na análise.</p>
+      </div>
+      <div class="card">
+        <h2>Fontes públicas</h2>
+        <div id="fontes"></div>
+      </div>
+    </section>
+
+    <!-- ============ Administração ============ -->
+    <section id="tela-admin" class="oculto">
+      <div class="card">
+        <h2>Empresas cadastradas</h2>
+        <table>
+          <thead><tr><th>Empresa</th><th>Plano</th><th class="num">Análises no mês</th><th class="num">Limite</th><th>Teste até</th><th>Ativa</th><th></th></tr></thead>
+          <tbody id="adLista"></tbody>
+        </table>
+        <div class="erro" id="erroAdmin"></div>
+      </div>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
