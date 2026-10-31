@@ -1,0 +1,20 @@
+{
+  "name": "credweb",
+  "version": "0.1.0",
+  "description": "credweb: análise de crédito B2B para venda a prazo (fontes públicas + bureau com a credencial do cliente)",
+  "private": true,
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "migrar": "node src/migrar.js",
+    "teste": "node test/pesquisa.test.js && node --test test/score.test.js test/receita.test.js test/api.test.js",
+    "test": "npm run teste"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@fastify/cookie": "^11.0.0",
+    "@fastify/static": "^8.0.0",
+    "fastify": "^5.0.0",
+    "pg": "^8.13.0"
+  }
+}
